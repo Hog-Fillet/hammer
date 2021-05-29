@@ -1,5 +1,5 @@
 class CreditcardsController < ApplicationController
-  before_action :set_creditcard, only: [:show, :edit, :update, :destroy]
+  before_action :set_creditcard, only: %i[show edit update destroy]
 
   # GET /creditcards
   # GET /creditcards.json
@@ -9,8 +9,7 @@ class CreditcardsController < ApplicationController
 
   # GET /creditcards/1
   # GET /creditcards/1.json
-  def show
-  end
+  def show; end
 
   # GET /creditcards/new
   def new
@@ -18,8 +17,7 @@ class CreditcardsController < ApplicationController
   end
 
   # GET /creditcards/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /creditcards
   # POST /creditcards.json
@@ -62,13 +60,14 @@ class CreditcardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_creditcard
-      @creditcard = Creditcard.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def creditcard_params
-      params.require(:creditcard).permit(:network, :cardnumber, :name, :address, :country, :cvv, :exp, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_creditcard
+    @creditcard = Creditcard.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def creditcard_params
+    params.require(:creditcard).permit(:network, :cardnumber, :name, :address, :country, :cvv, :exp, :user_id)
+  end
 end
